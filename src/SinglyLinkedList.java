@@ -4,7 +4,7 @@ public class SinglyLinkedList {
     private int size;
 
     /*  Constructor  */
-    private SinglyLinkedList(){
+    public SinglyLinkedList(){
         header = new Node(null);
         tail = header;
     }
@@ -38,11 +38,21 @@ public class SinglyLinkedList {
         size++;
     }
 
+    //Function to remove the first node
+    public void removeFirst(){
+        if (size != 0){
+            header.next = header.next.next;
+            size--;
+            //Garbage collector deletes the removed node object
+        }
+    }
+
     //Function to get the size of List
     public int getSize(){
         return size;
     }
 
+    //Function to get the string of the objects data for print.
     public String toString(){
         Node n = header.next;
         StringBuilder string = new StringBuilder();
