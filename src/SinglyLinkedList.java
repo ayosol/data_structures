@@ -1,6 +1,7 @@
 public class SinglyLinkedList {
     private Node header;
     private Node tail;
+    private Node currentNode;
     private int size;
 
     /*  Constructor  */
@@ -11,15 +12,15 @@ public class SinglyLinkedList {
 
     /*Function to insert an element at beginning */
     public void prepend(Object data){
-        Node n = new Node(data);
+       currentNode = new Node(data);
         if (size == 0){
-            header.next = n;
-            tail = n;
+            header.next = currentNode;
+            tail = currentNode;
         }
         else{
             Node temp = header.next;
-            header.next = n;
-            n.next = temp;
+            header.next = currentNode;
+            currentNode.next = temp;
         }
         size++;
     }
@@ -41,9 +42,24 @@ public class SinglyLinkedList {
     //Function to remove the first node
     public void removeFirst(){
         if (size != 0){
-            header.next = header.next.next;
+            header.next = currentNode .next;
             size--;
             //Garbage collector deletes the removed node object
+        }
+    }
+
+    //Function to remove the Last node
+    public void removeLast(){
+        if (size >= 1){
+            currentNode = header.next;
+            int count = 1;
+            while (count != (size-1)){
+                currentNode = currentNode.next;
+                count++;
+            }
+            tail = currentNode;
+            tail.next = null;
+            size--;
         }
     }
 
