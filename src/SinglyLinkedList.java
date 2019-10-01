@@ -63,6 +63,33 @@ public class SinglyLinkedList {
         }
     }
 
+
+    //Function to insert at a certain index in the list
+    public void insertAt(int index, Object data){
+        if (index <= 0 || index > size){
+            return;
+        }
+        else if (index == 1){
+            prepend(data);
+        }
+        else if (index == size){
+            append(data);
+        }
+        else{
+            Node newNode = new Node(data);
+            currentNode = header.next;
+            int count = 1;
+            while (count != (index -1)){
+                currentNode = currentNode.next;
+                count++;
+            }
+            Node temp = currentNode.next;
+            currentNode.next = newNode;
+            newNode.next = temp;
+            size++;
+        }
+    }
+
     //Function to get the size of List
     public int getSize(){
         return size;
