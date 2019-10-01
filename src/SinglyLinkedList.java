@@ -24,5 +24,24 @@ public class SinglyLinkedList {
         size++;
     }
 
+    /*Function to insert an element at the end*/
+    public void append(Object data){
+        Node n = new Node(data);
+        if (size == 0){
+            header.next = n;
+            tail = n;
+        }
+        else{
+            tail.next = n;
+            tail = n;
+        }
+        size++;
+    }
+
+    //Function to get the size of List
+    public int getSize(){
+        return size;
+    }
+
 
 }
