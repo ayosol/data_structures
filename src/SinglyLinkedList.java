@@ -90,6 +90,26 @@ public class SinglyLinkedList {
         }
     }
 
+    //Function to removeAt a certain index in the list
+    public void removeAt(int index) {
+        if (index <= 0 || index > size) {
+            return;
+        } else if (index == 1) {
+            removeFirst();
+        } else if (index == size) {
+            removeLast();
+        } else {
+            currentNode = header.next;
+            int count = 1;
+            while (count != index - 1) {
+                currentNode = currentNode.next;
+                count++;
+            }
+            currentNode.next = currentNode.next.next;
+            size--;
+        }
+    }
+
     //Function to get the size of List
     public int getSize(){
         return size;
