@@ -43,5 +43,15 @@ public class SinglyLinkedList {
         return size;
     }
 
+    public String toString(){
+        Node n = header.next;
+        StringBuilder string = new StringBuilder();
+        while (n != null){
+            string.append(n.data).append(" ");
+            n = n.next;
+        }
+        return string.toString();
+    }
+
 
 }
